@@ -1,0 +1,23 @@
+{
+  "name": "quiz-blocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sync": "unity-link ../platypus ./Assets/platypus"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekytime/quiz-blocks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geekytime/quiz-blocks/issues"
+  },
+  "homepage": "https://github.com/geekytime/quiz-blocks#readme",
+  "devDependencies": {
+    "unity-link": "~1.1.0"
+  }
+}
