@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class QuizRoomStartup : MonoBehaviour {
+public class QuizBlocksStartup : MonoBehaviour {
 	
 	void Start () {
     GameSupervisor.GetInstance().AddPlayer(new InputDevice("bez", KeyboardInputMap.Create()));
