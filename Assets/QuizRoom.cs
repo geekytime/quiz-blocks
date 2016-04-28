@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Platypus;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,8 @@ public class QuizRoom : MonoBehaviour {
 	}
 
   public void Correct(){
+    Inventory.GetInstance().AddCoin();
+
     foreach (var block in answerBlocks)
     {
       if (! block.IsCorrect)
