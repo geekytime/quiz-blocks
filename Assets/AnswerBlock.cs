@@ -8,6 +8,7 @@ public class AnswerBlock : UsableActivated
   public GameObject UnansweredBlock;
   public GameObject CorrectBlock;
   public GameObject IncorrectBlock;
+  public QuizRoom QuizRoom;
 
   public bool IsCorrect { get; set; }
 
@@ -36,9 +37,22 @@ public class AnswerBlock : UsableActivated
     if (IsCorrect)
     {
       CorrectBlock.SetActive(true);
+      QuizRoom.Correct();
     } else
     {
       IncorrectBlock.SetActive(true);
+      DimText();
     }
+  }
+
+  void DimText(){
+    var color = AnswerText.color;
+    color.a = .5f;
+    AnswerText.color = color;
+  }
+
+  public void Hide(){
+    gameObject.SetActive(false);
+    AnswerText.gameObject.SetActive(false);
   }
 }

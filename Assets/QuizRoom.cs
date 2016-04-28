@@ -38,8 +38,15 @@ public class QuizRoom : MonoBehaviour {
     }
 
 	}
+
+  public void Correct(){
+    foreach (var block in answerBlocks)
+    {
+      if (! block.IsCorrect)
+      {
+        block.Hide();
+      }
+    }
+  }
 		
-	void Update () {
-	
-	}
 }
