@@ -58,8 +58,28 @@ public class AnswerBlock : UsableActivated
     AnswerText.color = color;
   }
 
+  void ResetText(){
+    var color = AnswerText.color;
+    color.a = 1f;
+    AnswerText.color = color;
+  }
+
+
   public void Hide(){
     gameObject.SetActive(false);
     AnswerText.gameObject.SetActive(false);
+  }
+
+  public void Reset(){
+    ResetText();
+    answered = false;
+
+    gameObject.SetActive(true);
+    AnswerText.gameObject.SetActive(true);
+    CorrectBlock.SetActive(false);
+    IncorrectBlock.SetActive(false);
+    UnansweredBlock.SetActive(true);
+    UnansweredBlock.transform.localPosition = Vector3.zero;
+    GetComponent<Bonkable>().Reset();
   }
 }
