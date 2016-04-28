@@ -9,9 +9,11 @@ public class AnswerBlock : UsableActivated
   public GameObject CorrectBlock;
   public GameObject IncorrectBlock;
   public QuizRoom QuizRoom;
+  public Prize Prize;
 
   public bool IsCorrect { get; set; }
 
+  bool answered = false;
   float bounceDelay = .125f;
 
   public string Text
@@ -28,16 +30,21 @@ public class AnswerBlock : UsableActivated
     
   public override void Activate(GameObject player)
   {
-    Invoke("SwitchBlocks", bounceDelay);
+    if (!answered)
+    {
+      Invoke("Answer", bounceDelay);
+      answered = true;
+    }
   }
 
-  void SwitchBlocks()
+  void Answer()
   {
     UnansweredBlock.SetActive(false);
     if (IsCorrect)
     {
       CorrectBlock.SetActive(true);
       QuizRoom.Correct();
+      Prize.Activate();
     } else
     {
       IncorrectBlock.SetActive(true);
