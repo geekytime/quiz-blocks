@@ -1,1 +1,1 @@
-/Users/Chris/dev/platypus/EdgeDetector.cs
+/Users/chris/dev/platypus/EdgeDetector.cs

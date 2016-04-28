@@ -1,1 +1,1 @@
-/Users/Chris/dev/platypus/InventoryItem.cs
+/Users/chris/dev/platypus/InventoryItem.cs

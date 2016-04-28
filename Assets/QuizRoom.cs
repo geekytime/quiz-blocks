@@ -17,19 +17,17 @@ public class QuizRoom : MonoBehaviour {
     answerTexts.Add(AnswerMiddleText);
     answerTexts.Add(AnswerRightText);
 
-    int lhs = Random.Range(0, 10);
-    int rhs = Random.Range(0, 10);
-    ProblemText.text = lhs + " + " + rhs + " = ?";
+    QuestionBuilder qb = new SimpleAdditionBuilder ();
 
-    int answer = lhs + rhs;
-    int wrong1 = lhs + rhs + Random.Range(-3, 3);
-    int wrong2 = lhs + rhs + Random.Range(-3, 3);
+    var question = qb.Build ();
 
-    List<int> answers = new List<int>(){ answer, wrong1, wrong2 };
-    var shuffledAnswers = answers.OrderBy(x => Random.value);
+    ProblemText.text = question.question;
+
+    var answers = question.ShuffleAnswers ();
+    
     for (var i = 0; i < answerTexts.Count; i++)
     {
-      answerTexts [i].text = shuffledAnswers.ElementAt(i).ToString();
+      answerTexts [i].text = answers.ElementAt(i);
     }
 
 	}
