@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class QuizRoom : MonoBehaviour {
 	
   public Text ProblemText;
-  public Text AnswerLeftText;
-  public Text AnswerMiddleText;
-  public Text AnswerRightText;
+  public AnswerBlock AnswerBlockLeft;
+  public AnswerBlock AnswerBlockMiddle;
+  public AnswerBlock AnswerBlockRight;
 
-  List<Text> answerTexts = new List<Text>();
+  List<AnswerBlock> answerBlocks = new List<AnswerBlock>();
 
 	void Start () {
-    answerTexts.Add(AnswerLeftText);
-    answerTexts.Add(AnswerMiddleText);
-    answerTexts.Add(AnswerRightText);
+    answerBlocks.Add(AnswerBlockLeft);
+    answerBlocks.Add(AnswerBlockMiddle);
+    answerBlocks.Add(AnswerBlockRight);
 
     QuestionBuilder qb = new SimpleAdditionBuilder ();
 
@@ -25,9 +25,16 @@ public class QuizRoom : MonoBehaviour {
 
     var answers = question.ShuffleAnswers ();
     
-    for (var i = 0; i < answerTexts.Count; i++)
+    for (var i = 0; i < answerBlocks.Count; i++)
     {
-      answerTexts [i].text = answers.ElementAt(i);
+      answerBlocks [i].Text = answers.ElementAt(i);
+      if (answers.ElementAt(i) == question.answer)
+      {
+        answerBlocks [i].IsCorrect = true;
+      } else
+      {
+        answerBlocks [i].IsCorrect = false;
+      }
     }
 
 	}
