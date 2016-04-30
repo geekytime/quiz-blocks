@@ -282,9 +282,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.052740097}
+  m_Offset: {x: 0, y: -0.14673114}
   serializedVersion: 2
-  m_Size: {x: 0.8914746, y: 1.7364154}
+  m_Size: {x: 0.8914746, y: 1.5484331}
 --- !u!61 &6199496
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -343,9 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Bez
   PlayerUIPrefab: {fileID: 0}
-  StartScene: shop
-  StartArea: shop
-  StartPortal: shop-door
+  StartScene: quiz-room
+  StartArea: quiz-room
+  StartPortal: welcome-door
 --- !u!114 &11414602
 MonoBehaviour:
   m_ObjectHideFlags: 1
