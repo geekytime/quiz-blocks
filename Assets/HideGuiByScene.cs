@@ -11,8 +11,7 @@ public class HideGuiByScene : MonoBehaviour {
     canvas = GetComponent<Canvas>();
   }
 
-	void Update () {
-    Debug.Log(playerScene);
+	void Update () {    
     var enabled = (playerScene == "quiz-room");
     canvas.enabled = enabled;
 	}
