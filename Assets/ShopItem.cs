@@ -9,7 +9,22 @@ public class ShopItem : UsableActivated {
   public string ItemType = "item";
   public string ItemKey = "item";
 
+  TextMesh costText;
+  SpriteRenderer icon;
+
+  void Start(){
+    costText = transform.FindChild("cost").GetComponent<TextMesh>();
+    costText.text = Cost.ToString();
+
+    icon = transform.FindChild("icon").GetComponent<SpriteRenderer>();
+  }
+
   public override void Activate(GameObject player){    
-    Inventory.GetInstance().BuyItem(Cost, ItemType, ItemKey);
+    var success = Inventory.GetInstance().BuyItem(Cost, ItemType, ItemKey);
+    if (success)
+    {
+      costText.gameObject.SetActive(false);
+      icon.gameObject.SetActive(false);
+    }
   }
 }
