@@ -13,6 +13,9 @@ public class ShopItem : UsableActivated {
   TextMesh costText;
   SpriteRenderer icon;
 
+  public AudioSource BuySound;
+  public AudioSource NotEnoughCoinsSound;
+
   void Start(){
     costText = transform.FindChild("cost").GetComponent<TextMesh>();
     costText.text = Cost.ToString();
@@ -30,10 +33,13 @@ public class ShopItem : UsableActivated {
     {
       var success = Inventory.GetInstance().BuyItem(Cost, ItemType, ItemKey);
       if (success)
-      {
+      {        
         Hide();
+        BuySound.Play();
+        return;
       }
     }
+    NotEnoughCoinsSound.Play();
   }
 
   void Hide(){

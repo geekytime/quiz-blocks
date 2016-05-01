@@ -132,7 +132,7 @@ GameObject:
   - 114: {fileID: 11451616}
   - 114: {fileID: 11405302}
   - 114: {fileID: 11456652}
-  - 82: {fileID: 8240510}
+  - 114: {fileID: 11465906}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -300,80 +300,6 @@ BoxCollider2D:
   m_Offset: {x: -0.0152974725, y: 0.040792942}
   serializedVersion: 2
   m_Size: {x: 0.5512763, y: 0.12294865}
---- !u!82 &8240510
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186186}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 95988b01290b04f909caf28fc6964ba0, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 1
-  BypassListenerEffects: 1
-  BypassReverbZones: 1
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &9521350
 Animator:
   serializedVersion: 3
@@ -497,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aa1255cf22e4590805505b04ac1cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacingRight: 1
+  FacingRight: 0
 --- !u!114 &11462616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,6 +435,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc6a70e9227453fa7981aa9788184e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11465906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a7e70d073644e1e8e03c512b0c6552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 0}
 --- !u!114 &11494566
 MonoBehaviour:
   m_ObjectHideFlags: 1
