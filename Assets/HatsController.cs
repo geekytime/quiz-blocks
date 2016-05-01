@@ -5,7 +5,10 @@ public class HatsController : MonoBehaviour {
 	
   public void Wear(string hatName){    
     HideAll();
-    this.transform.FindChild(hatName).gameObject.SetActive(true);
+    if (hatName != "none")
+    {
+      this.transform.FindChild(hatName).gameObject.SetActive(true);
+    }
   }
 
   void HideAll(){

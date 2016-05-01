@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class Inventory {
 
   static Inventory instance;
-  static List<string> hats;
+  List<string> hats;
+  int currentHatIndex = -1;
 
   public static Inventory GetInstance(){
     if (instance == null){      
@@ -56,6 +57,10 @@ public class Inventory {
     hats.Wear(hatName);
   }
 
+  public List<string> GetHats(){
+    return hats;
+  }
+
   void SaveCoins(){
     PlayerPrefs.SetInt("coins", coins);
     PlayerPrefs.Save();
@@ -67,11 +72,28 @@ public class Inventory {
 
   void SaveHats(){
     PlayerPrefsEx.SetStringArray("hats", hats.ToArray());
+    PlayerPrefs.SetInt("currentHatIndex", currentHatIndex);
+    PlayerPrefs.Save();
   }
 
   void LoadHats(){
     hats = new List<string>(PlayerPrefsEx.GetStringArray("hats"));
+    currentHatIndex = PlayerPrefs.GetInt("currentHatIndex");
   }
 
+  public string GetNextHat(){
+    if (currentHatIndex + 1 < hats.Count)
+    {
+      currentHatIndex++;
+    } else
+    {
+      currentHatIndex = -1;
+    }
+    if (currentHatIndex == -1)
+    {
+      return "none";
+    }
+    return hats [currentHatIndex];
+  }
     	
 }
