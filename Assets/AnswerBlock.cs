@@ -47,6 +47,7 @@ public class AnswerBlock : UsableActivated
       Prize.Activate();
     } else
     {
+      QuizRoom.Incorrect();
       IncorrectBlock.SetActive(true);
       DimText();
     }

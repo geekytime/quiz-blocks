@@ -11,6 +11,8 @@ public class QuizRoom : UsableActivated {
   public AnswerBlock AnswerBlockMiddle;
   public AnswerBlock AnswerBlockRight;
   public List<GameObject> Doors;
+  public AudioSource missSound;
+  public AudioSource coinSound;
 
   List<AnswerBlock> answerBlocks = new List<AnswerBlock>();
 
@@ -48,6 +50,11 @@ public class QuizRoom : UsableActivated {
     Inventory.GetInstance().AddCoin();
     ShowDoors();
     HideBlocks();
+    coinSound.Play();
+  }
+
+  public void Incorrect(){
+    missSound.Play();
   }
 
   void HideBlocks(){
