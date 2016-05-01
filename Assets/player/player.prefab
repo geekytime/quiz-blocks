@@ -343,9 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Bez
   PlayerUIPrefab: {fileID: 0}
-  StartScene: quiz-room
-  StartArea: quiz-room
-  StartPortal: welcome-door
+  StartScene: welcome
+  StartArea: welcome
+  StartPortal: home-door
 --- !u!114 &11414602
 MonoBehaviour:
   m_ObjectHideFlags: 1
