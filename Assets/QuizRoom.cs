@@ -13,6 +13,7 @@ public class QuizRoom : UsableActivated {
   public List<GameObject> Doors;
   public AudioSource missSound;
   public AudioSource coinSound;
+  int currentValue = 2;
 
   List<AnswerBlock> answerBlocks = new List<AnswerBlock>();
 
@@ -24,7 +25,14 @@ public class QuizRoom : UsableActivated {
     NewQuestion();
 	}
 
+  public int CurrentValue {
+    get{
+      return currentValue;
+    }
+  }
+
   void NewQuestion(){
+    currentValue = 2;
     QuestionBuilder qb = new SimpleAdditionBuilder ();
 
     var question = qb.Build ();
@@ -47,13 +55,13 @@ public class QuizRoom : UsableActivated {
   }
 
   public void Correct(){
-    Inventory.GetInstance().AddCoin();
+    Inventory.GetInstance().AddCoins(currentValue);
     ShowDoors();
     HideBlocks();
-    coinSound.Play();
   }
 
   public void Incorrect(){
+    currentValue--;
     missSound.Play();
   }
 
@@ -93,6 +101,10 @@ public class QuizRoom : UsableActivated {
     }
 
     NewQuestion();
+  }
+
+  public void PlayCoinSound(){
+    coinSound.Play();
   }
 
 }

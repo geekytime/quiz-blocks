@@ -44,7 +44,10 @@ public class AnswerBlock : UsableActivated
     {
       CorrectBlock.SetActive(true);
       QuizRoom.Correct();
-      Prize.Activate();
+      if (QuizRoom.CurrentValue > 0)
+      {
+        Prize.Activate(QuizRoom.CurrentValue);
+      }
     } else
     {
       QuizRoom.Incorrect();

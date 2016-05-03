@@ -12,7 +12,7 @@ public class PlayerHomeGoods : MonoBehaviour {
         child.gameObject.SetActive(true);
       } else
       {
-//        child.gameObject.SetActive(false);
+        child.gameObject.SetActive(false);
       }
     }
   }

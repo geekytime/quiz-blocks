@@ -15,7 +15,6 @@ public class Inventory
   {
     if (instance == null)
     {      
-//      PlayerPrefs.DeleteAll();
       instance = new Inventory();
       instance.LoadCoins();
       instance.LoadHats();
@@ -28,11 +27,11 @@ public class Inventory
     return instance;
   }
 
-  int coins = 25;
+  int coins = 0;
 
-  public void AddCoin()
+  public void AddCoins(int count)
   {
-    coins = coins + 25;
+    coins = coins + count;
     SaveCoins();
   }
 
