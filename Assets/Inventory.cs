@@ -137,11 +137,23 @@ public class Inventory
     {
       currentHatIndex = -1;
     }
+
+    SaveHats();
+
     if (currentHatIndex == -1)
     {
       return "none";
     }
     return hats [currentHatIndex];
   }
-    	
+
+  public string GetCurrentHat(){
+    if (currentHatIndex == -1)
+    {
+      return "none";
+    } else
+    {
+      return hats [currentHatIndex];
+    }
+  }
 }
