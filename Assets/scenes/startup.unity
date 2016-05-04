@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TopTrigger: {fileID: 1595022351}
-  BottomTrigger: {fileID: 0}
+  BottomTrigger: {fileID: 849842422}
 --- !u!95 &47663900
 Animator:
   serializedVersion: 3
@@ -344,6 +344,7 @@ Transform:
   - {fileID: 1595022352}
   - {fileID: 1866061685}
   - {fileID: 132268706}
+  - {fileID: 849842421}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &80680958
@@ -833,6 +834,49 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &849842420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 123232, guid: bdb41e386dd2249588171af64915c8b2, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 849842421}
+  - 61: {fileID: 849842422}
+  m_Layer: 10
+  m_Name: bottom-bonker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &849842421
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 424908, guid: bdb41e386dd2249588171af64915c8b2, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849842420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.031, y: 0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 47663909}
+  m_RootOrder: 3
+--- !u!61 &849842422
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6199496, guid: bdb41e386dd2249588171af64915c8b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 849842420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.016676813, y: 0.040792942}
+  serializedVersion: 2
+  m_Size: {x: 0.6123465, y: 0.12294865}
 --- !u!1 &1391930702
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +946,7 @@ GameObject:
   - 4: {fileID: 1595022352}
   - 61: {fileID: 1595022351}
   m_Layer: 10
-  m_Name: bonker
+  m_Name: top-bonker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -920,9 +964,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.006906733, y: 0.040792942}
+  m_Offset: {x: -0.016676813, y: 0.040792942}
   serializedVersion: 2
-  m_Size: {x: 0.85334015, y: 0.12294865}
+  m_Size: {x: 0.6123465, y: 0.12294865}
 --- !u!4 &1595022352
 Transform:
   m_ObjectHideFlags: 0
