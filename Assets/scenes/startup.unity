@@ -299,7 +299,7 @@ MonoBehaviour:
   PlayerUIPrefab: {fileID: 0}
   StartScene: welcome
   StartArea: welcome
-  StartPortal: home-door
+  StartPortal: spawn
 --- !u!212 &47663908
 SpriteRenderer:
   m_ObjectHideFlags: 0
