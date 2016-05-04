@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
 
   static Inventory instance;
@@ -11,149 +11,141 @@ public class Inventory
   HatsController playerHats;
   PlayerHomeGoods playerHomeGoods;
 
-  public static Inventory GetInstance()
+  void Awake ()
+  {       
+    instance = this;
+    this.LoadCoins ();
+    this.LoadHats ();
+    this.LoadHomeGoods ();
+
+    this.playerHats = GameObject.Find ("player-hats").GetComponent<HatsController> ();
+    this.playerHomeGoods = GameObject.Find ("player-home-goods").GetComponent<PlayerHomeGoods> ();
+  }
+
+  public static Inventory GetInstance ()
   {
-    if (instance == null)
-    {            
-      instance = new Inventory();
-      instance.LoadCoins();
-      instance.LoadHats();
-      instance.LoadHomeGoods();
-
-      instance.playerHats = GameObject.Find("player-hats").GetComponent<HatsController>();
-      instance.playerHomeGoods = GameObject.Find("player-home-goods").GetComponent<PlayerHomeGoods>();
-
-    }
     return instance;
   }
 
   int coins = 0;
 
-  public void AddCoins(int count)
+  public void AddCoins (int count)
   {
     coins = coins + count;
-    SaveCoins();
+    SaveCoins ();
   }
 
-  public int GetCoinCount()
+  public int GetCoinCount ()
   {
     return coins;
   }
 
-  public bool BuyItem(int cost, string itemType, string itemKey)
+  public bool BuyItem (int cost, string itemType, string itemKey)
   {    
-    if (coins < cost)
-    {
+    if (coins < cost) {
       return false;
     }
 
     coins = coins - cost;
-    SaveCoins();
-    if (itemType == "hat")
-    {       
-      hats.Add(itemKey);
-      ActivateHat(itemKey);
-      SaveHats();
+    SaveCoins ();
+    if (itemType == "hat") {       
+      hats.Add (itemKey);
+      ActivateHat (itemKey);
+      SaveHats ();
     }
-    if (itemType == "homegoods")
-    {
-      homegoods.Add(itemKey);
-      ActivateHomeGood(itemKey);
-      SaveHomeGoods();
+    if (itemType == "homegoods") {
+      homegoods.Add (itemKey);
+      ActivateHomeGood (itemKey);
+      SaveHomeGoods ();
     }
     return true;
   }
 
-  public bool HasItem(string itemType, string itemKey)
+  public bool HasItem (string itemType, string itemKey)
   {
-    if (itemType == "hat")
-    {
-      return hats.Contains(itemKey);
+    if (itemType == "hat") {
+      return hats.Contains (itemKey);
     }
-    if (itemType == "homegoods")
-    {
-      return homegoods.Contains(itemKey);
+    if (itemType == "homegoods") {
+      return homegoods.Contains (itemKey);
     }
     return false;
   }
 
-  void ActivateHat(string hatName)
+  void ActivateHat (string hatName)
   {    
-    playerHats.Wear(hatName);
+    playerHats.Wear (hatName);
   }
 
-  void ActivateHomeGood(string itemName)
+  void ActivateHomeGood (string itemName)
   {   
-    playerHomeGoods.Show(itemName);
+    playerHomeGoods.Show (itemName);
   }
 
-  void SaveHomeGoods()
+  void SaveHomeGoods ()
   {
-    PlayerPrefsEx.SetStringArray("homegoods", homegoods.ToArray());
-    PlayerPrefs.Save();
+    PlayerPrefsEx.SetStringArray ("homegoods", homegoods.ToArray ());
+    PlayerPrefs.Save ();
   }
 
-  void LoadHomeGoods()
+  void LoadHomeGoods ()
   {
-    homegoods = new List<string>(PlayerPrefsEx.GetStringArray("homegoods"));
+    homegoods = new List<string> (PlayerPrefsEx.GetStringArray ("homegoods"));
   }
 
-  public List<string> GetHats()
+  public List<string> GetHats ()
   {
     return hats;
   }
 
-  void SaveCoins()
+  void SaveCoins ()
   {
-    PlayerPrefs.SetInt("coins", coins);
-    PlayerPrefs.Save();
+    PlayerPrefs.SetInt ("coins", coins);
+    PlayerPrefs.Save ();
   }
 
-  void LoadCoins()
+  void LoadCoins ()
   {
-    coins = PlayerPrefs.GetInt("coins");
+    coins = PlayerPrefs.GetInt ("coins");
   }
 
 
-  void SaveHats()
+  void SaveHats ()
   {
-    PlayerPrefsEx.SetStringArray("hats", hats.ToArray());
-    PlayerPrefs.SetInt("currentHatIndex", currentHatIndex);
-    PlayerPrefs.Save();
+    PlayerPrefsEx.SetStringArray ("hats", hats.ToArray ());
+    PlayerPrefs.SetInt ("currentHatIndex", currentHatIndex);
+    PlayerPrefs.Save ();
   }
 
-  void LoadHats()
+  void LoadHats ()
   {
-    hats = new List<string>(PlayerPrefsEx.GetStringArray("hats"));
-    currentHatIndex = PlayerPrefs.GetInt("currentHatIndex");
+    hats = new List<string> (PlayerPrefsEx.GetStringArray ("hats"));
+    currentHatIndex = PlayerPrefs.GetInt ("currentHatIndex");
   }
 
-  public string GetNextHat()
+  public string GetNextHat ()
   {
-    if (currentHatIndex + 1 < hats.Count)
-    {
+    if (currentHatIndex + 1 < hats.Count) {
       currentHatIndex++;
-    } else
-    {
+    } else {
       currentHatIndex = -1;
     }
 
-    SaveHats();
+    SaveHats ();
 
-    if (currentHatIndex == -1)
-    {
+    if (currentHatIndex == -1) {
       return "none";
     }
     return hats [currentHatIndex];
   }
 
-  public string GetCurrentHat(){
-    if (currentHatIndex == -1)
-    {
+  public string GetCurrentHat ()
+  {
+    if (currentHatIndex == -1) {
       return "none";
-    } else
-    {
+    } else if (currentHatIndex < hats.Count) {
       return hats [currentHatIndex];
     }
+    return "none";
   }
 }

@@ -5,7 +5,7 @@ using System.Collections;
 public class OperationSelector : UsableActivated
 {
 	
-  public TextMesh text;
+  public TextMesh[] texts;
   public QuizRoom quizRoom;
   string[] operators = new string[]{ "+", "-", "±", "×", "÷",  "!" };
   QuestionBuilder[] quizBuilders = new QuestionBuilder[]
@@ -35,11 +35,21 @@ public class OperationSelector : UsableActivated
 
   void Reset()
   {
-    text.text = operators [currentIndex];
+    ShowIcon ();
     var qb = quizBuilders [currentIndex];
     quizRoom.Reset(qb);
   }
 
+  void ShowIcon(){
+    var currentSign = operators [currentIndex];
+    foreach (var text in texts) {
+      if (text.name == currentSign) {
+        text.gameObject.SetActive (true);
+      } else {
+        text.gameObject.SetActive (false);
+      }
+    }
+  }
 
   void Increment()
   {
