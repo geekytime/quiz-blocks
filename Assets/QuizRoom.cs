@@ -15,6 +15,8 @@ public class QuizRoom : UsableActivated {
   public AudioSource coinSound;
   int currentValue = 2;
 
+  QuestionBuilder currentQB = new AdditionBuilder();
+
   List<AnswerBlock> answerBlocks = new List<AnswerBlock>();
 
 	void Start () {
@@ -33,9 +35,8 @@ public class QuizRoom : UsableActivated {
 
   void NewQuestion(){
     currentValue = 2;
-    QuestionBuilder qb = new SimpleAdditionBuilder ();
 
-    var question = qb.Build ();
+    var question = currentQB.Build ();
 
     ProblemText.text = question.question;
 
@@ -93,6 +94,11 @@ public class QuizRoom : UsableActivated {
     Reset();
   }
 		
+  public void Reset(QuestionBuilder qb){
+    currentQB = qb;
+    Reset();
+  }
+
   void Reset(){
     HideDoors();
     foreach (var block in answerBlocks)

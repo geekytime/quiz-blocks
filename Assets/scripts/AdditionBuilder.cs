@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SimpleAdditionBuilder : QuestionBuilder {
+public class AdditionBuilder : QuestionBuilder {
 
 	public Question Build(){
 		var question = new Question ();
 
-		int lhs = Random.Range(0, 10);
-		int rhs = Random.Range(0, 10);
+		int lhs = Random.Range(0, 11);
+		int rhs = Random.Range(0, 11);
 		question.question = lhs + " + " + rhs + " = ?";
 
 		var sum = lhs + rhs;
