@@ -14,7 +14,7 @@ public class Inventory
   public static Inventory GetInstance()
   {
     if (instance == null)
-    {      
+    {            
       instance = new Inventory();
       instance.LoadCoins();
       instance.LoadHats();
@@ -83,8 +83,7 @@ public class Inventory
   }
 
   void ActivateHomeGood(string itemName)
-  {
-    Debug.Log("Activate:" + itemName);
+  {   
     playerHomeGoods.Show(itemName);
   }
 
