@@ -5,11 +5,8 @@ using System.Collections;
 public class QuizBlocksStartup : MonoBehaviour {
 	
 	void Start () {
-    GameSupervisor.GetInstance().AddPlayer(new InputDevice("bez", KeyboardInputMap.Create()));
+    var input = new InputDevice ("bez", KeyboardInputMap.Create ());
+    GameSupervisor.GetInstance().AddPlayer(input);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

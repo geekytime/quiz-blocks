@@ -4,7 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuizRoom : UsableActivated {
+public class QuizRoom : UsableActivated
+{
 	
   public Text ProblemText;
   public AnswerBlock AnswerBlockLeft;
@@ -15,25 +16,27 @@ public class QuizRoom : UsableActivated {
   public AudioSource coinSound;
   int currentValue = 2;
 
-  QuestionBuilder currentQB = new AdditionBuilder();
+  QuestionBuilder currentQB = new AdditionBuilder ();
 
-  List<AnswerBlock> answerBlocks = new List<AnswerBlock>();
+  List<AnswerBlock> answerBlocks = new List<AnswerBlock> ();
 
-	void Start () {
-    answerBlocks.Add(AnswerBlockLeft);
-    answerBlocks.Add(AnswerBlockMiddle);
-    answerBlocks.Add(AnswerBlockRight);
+  void Start ()
+  {
+    answerBlocks.Add (AnswerBlockLeft);
+    answerBlocks.Add (AnswerBlockMiddle);
+    answerBlocks.Add (AnswerBlockRight);
 
-    NewQuestion();
-	}
+    NewQuestion ();
+  }
 
   public int CurrentValue {
-    get{
+    get {
       return currentValue;
     }
   }
 
-  void NewQuestion(){
+  void NewQuestion ()
+  {
     currentValue = 2;
 
     var question = currentQB.Build ();
@@ -42,75 +45,77 @@ public class QuizRoom : UsableActivated {
 
     var answers = question.ShuffleAnswers ();
 
-    for (var i = 0; i < answerBlocks.Count; i++)
-    {
-      answerBlocks [i].Text = answers.ElementAt(i);
-      if (answers.ElementAt(i) == question.answer)
-      {
+    for (var i = 0; i < answerBlocks.Count; i++) {
+      answerBlocks [i].Text = answers.ElementAt (i);
+      if (answers.ElementAt (i) == question.answer) {
         answerBlocks [i].IsCorrect = true;
-      } else
-      {
+      } else {
         answerBlocks [i].IsCorrect = false;
       }
     }
   }
 
-  public void Correct(){
-    Inventory.GetInstance().AddCoins(currentValue);
-    ShowDoors();
-    HideBlocks();
+  public void Correct ()
+  {
+    Inventory.GetInstance ().AddCoins (currentValue);
+    ShowDoors ();
+    HideBlocks ();
   }
 
-  public void Incorrect(){
+  public void Incorrect ()
+  {
     currentValue--;
-    missSound.Play();
+    missSound.Play ();
   }
 
-  void HideBlocks(){
-    foreach (var block in answerBlocks)
-    {
-      if (! block.IsCorrect)
-      {
-        block.Hide();
+  void HideBlocks ()
+  {
+    foreach (var block in answerBlocks) {
+      if (!block.IsCorrect) {
+        block.Hide ();
       }
     }
   }
 
-  void ShowDoors(){
-    foreach (var door in Doors)
-    {
-      door.SetActive(true);
+  void ShowDoors ()
+  {
+    foreach (var door in Doors) {
+      door.SetActive (true);
     }
   }
 
-  void HideDoors(){
-    foreach (var door in Doors)
-    {
-      door.SetActive(false);
+  void HideDoors ()
+  {
+    foreach (var door in Doors) {
+      door.SetActive (false);
     }
   }
 
-  public override void Activate(GameObject player){
-    Reset();
+  public override void Activate (GameObject player)
+  {
+    QuizLevel.instance.GoUp ();
+    Reset ();
   }
-		
-  public void Reset(QuestionBuilder qb){
+
+  public void Reset (QuestionBuilder qb)
+  {
     currentQB = qb;
-    Reset();
+    Reset ();
   }
 
-  void Reset(){
-    HideDoors();
-    foreach (var block in answerBlocks)
-    {
-      block.Reset();
+  void Reset ()
+  {
+    HideDoors ();
+    foreach (var block in answerBlocks) {
+      block.Reset ();
     }
 
-    NewQuestion();
+    NewQuestion ();
   }
 
-  public void PlayCoinSound(){
-    coinSound.Play();
+  public void PlayCoinSound ()
+  {
+    coinSound.Play ();
   }
 
 }
